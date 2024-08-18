@@ -121,6 +121,6 @@ ignore_errors = true
 
 [tool.coverage.run]
 omit = [
-    # Experiments are not tested
-    "*/experiments/*",
+    # Workflows are not tested
+    "*/workflows/*",
 ]
