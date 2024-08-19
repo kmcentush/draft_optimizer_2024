@@ -84,6 +84,7 @@ def get_draft(draft_id: str) -> dict[str, Any]:
         "rounds": num_rounds,
         "order": draft_order,
         "type": meta["type"],
+        "slots": meta["draft_order"],
     }
 
     return out

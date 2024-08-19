@@ -12,6 +12,7 @@ class Draft:
         self.rounds = draft["rounds"]
         self.order = draft["order"]
         self.type = draft["type"]
+        self.slots = draft["slots"]
 
         # Set picks
         self.picks: list[dict[str, Any]] = []
@@ -30,13 +31,10 @@ class Draft:
 
     def get_rosters(self) -> dict[int, list[dict[str, Any]]]:
         # Build map of team index -> picks
-        picks = self.picks
         rosters: dict[int, list[dict[str, Any]]] = {i + 1: [] for i in range(self.league_size)}
-        for i, team in enumerate(self.order):
-            if i >= len(picks):
-                break
-            else:
-                rosters[team].append(picks[i])
+        for pick in self.picks:
+            team = pick["slot"]
+            rosters[team].append(pick)
 
         return rosters
 
