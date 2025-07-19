@@ -1,6 +1,6 @@
 import polars as pl
 from prefect import flow, task
-from prefect.task_runners import ConcurrentTaskRunner
+from prefect.task_runners import ThreadPoolTaskRunner
 
 from football.data import sleeper, write_parquet
 
@@ -27,7 +27,7 @@ def get_weekly_projections(season: int, weeks: list[int]):
     write_parquet(proj, "weekly_projections.parquet")
 
 
-@flow(name="Sleeper - Get Data", task_runner=ConcurrentTaskRunner())
+@flow(name="Sleeper - Get Data", task_runner=ThreadPoolTaskRunner)  # type: ignore[no-matching-overload]
 def main(season: int, weeks: list[int]):
     get_players()
     get_weekly_projections(season, weeks)

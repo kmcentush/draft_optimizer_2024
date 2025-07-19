@@ -6,7 +6,7 @@
 - Draft Recommendations
   - Sync draft state from Sleeper leagues
   - Use convex optimization to recommend an optimal roster
-    - Obj*ective function: maximize the minimum points your team will score each week
+    - Objective function: maximize the minimum points your team will score each week
 
 ## Installation
 1. Install [uv](https://github.com/astral-sh/uv) for your system.

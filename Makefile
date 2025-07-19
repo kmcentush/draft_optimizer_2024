@@ -18,15 +18,15 @@ prd_install:
 
 .PHONY: format
 format:
-	ruff format .
 	ruff check . --fix
-	pyright .
+	ruff format .
+	ty check .
 
 .PHONY: test_format
 test_format:
-	ruff format . --check
 	ruff check .
-	pyright .
+	ruff format . --check
+	ty check .
 
 .PHONY: pytest
 pytest:

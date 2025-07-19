@@ -18,10 +18,10 @@ dependencies = [
 dev = [
     "nbstripout",
     "pre-commit",
-    "pyright",
     "pytest",
     "pytest-cov",
     "ruff",
+    "ty",
 ]
 
 [tool.setuptools.dynamic]
@@ -92,9 +92,6 @@ per-file-ignores = {"__init__.py" = ["F401"]}
 
 [tool.ruff.lint.flake8-type-checking]
 quote-annotations = true
-
-[tool.mypy]
-exclude = ['venv', '.venv']
 
 [tool.coverage.report]
 # Regexes for lines to exclude from consideration

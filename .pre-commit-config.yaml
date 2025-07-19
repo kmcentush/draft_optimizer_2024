@@ -1,26 +1,23 @@
 repos:
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.6.3
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.4
     hooks:
-      - id: ruff-format
+      - id: ruff-check
         args:
-          - --check
-        files: .
-        types_or: [python, pyi, jupyter]
-        language_version: python3.12
-      - id: ruff
-        files: .
-        types_or: [python, pyi, jupyter]
-        language_version: python3.12
-  - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.378
+          - --fix
+      - id: ruff-format
+  - repo: local  # FUTURE: use official hook
     hooks:
-    - id: pyright
-      files: .
-      language_version: python3.12
+      - id: ty-check
+        name: ty-check
+        language: python
+        entry: ty check
+        pass_filenames: false
+        args:
+          - --python=.venv/
+        additional_dependencies: [ty]
   - repo: https://github.com/kynan/nbstripout
-    rev: 0.7.1
+    rev: 0.8.1
     hooks:
       - id: nbstripout
         files: .
-        language_version: python3.12
